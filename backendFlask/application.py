@@ -5,9 +5,6 @@ from sentimenter import CNNSentimenter
 application = Flask(__name__)
 application.config['PROPAGATE_EXCEPTIONS'] = True
 sent = CNNSentimenter()
-@application.route('/')
-def hello_world():
-	return 'Hello World!'
 
 @application.route('/getsentiment', methods=['GET'])
 def getsentiment():	
