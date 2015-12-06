@@ -1,10 +1,10 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
-from sentimenter import RandomSentimenter
+from sentimenter import CNNSentimenter
 application = Flask(__name__)
 application.config['PROPAGATE_EXCEPTIONS'] = True
-sent = RandomSentimenter()
+sent = CNNSentimenter()
 @application.route('/')
 def hello_world():
 	return 'Hello World!'

@@ -19,30 +19,26 @@
       </style>
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
       <link rel="stylesheet" href="css/main.css">
-      <script src="/bower_components/angular/angular.js"></script>
       <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
   <body>
       <!--[if lt IE 8]>
           <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
       <![endif]-->
     <div class="container-fluid">
-
       <div class="page-header">
         <h1>Text Sentiment Visualizer <br/><small> Using deep neural networks and d3.js</small></h1>
       </div>
       <div class="panel panel-default">
-        <div class="panel-body">
-          <form>
-            <textarea class="form-control", rows = 5, id="textInput", placeholder="Type or paste your text here..."></textarea>
-            </br>
-            <div class="row">
+        <div class="panel-body" id="maincontent">
+          
+        </div>
+        <div class="row">
               <div class="col-md-offset-4 col-md-4 col-xs-12">
-                <input type="button" value = "Go" class="btn-block btn btn-primary">
+                <input type="button" value = "Go" id= "gobtn" class="btn-block btn btn-primary">
               </div>
             </div>
-          </form>
-        </div>
       </div>
 
      

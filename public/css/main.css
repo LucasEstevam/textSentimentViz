@@ -25,12 +25,18 @@
 }
 
 
+.hsentence {
+	font-weight: bold;
+}
 
 
 
-
-.chart rect {
+.bar.positive {
   fill: steelblue;
+}
+
+.bar.negative {
+  fill: brown;
 }
 
 .chart text {

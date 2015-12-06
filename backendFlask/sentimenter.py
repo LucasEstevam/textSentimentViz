@@ -1,14 +1,17 @@
 from random import random
 import re
-from metamind.api import ClassificationData, ClassificationModel, set_api_key
+import sys
+sys.path.insert(0, '../../sentimentTheano')
+from conv_net_sentimenter import Sentimenter
 
-class RandomSentimenter:
-
+class CNNSentimenter:
 	def __init__(self):
-		print "RandomSentimenter initialized"
+		print "CNNSentimenter initialized"
+		self.sentimenter = Sentimenter()
 
 	def computeSentimentPart(self, text):
-		return -1 + 2*random()
+		result = self.sentimenter.getSentiment(text)
+		return -1 + 2*result[0][1]		
 
 	def computeSentiment(self, text):
 		paragraphs = text.split('\n')
@@ -40,21 +43,13 @@ class RandomSentimenter:
 		return {'paragraphs': sentiments}
 
 
-class MetamindSentimenter:
+class RandomSentimenter:
+
 	def __init__(self):
-		set_api_key('')
-		print "MetamindSentimenter initialized"
-		self.classifier = ClassificationModel(id='155')
+		print "RandomSentimenter initialized"
 
 	def computeSentimentPart(self, text):
-		if not text:
-			return 0
-		print text
-		result = self.classifier.predict(text, input_type='text')
-		value = 2*(result[0]['probability'] - 0.5)
-		if(result[0]['label'] == 'negative'):
-			value = -value
-		return value
+		return -1 + 2*random()
 
 	def computeSentiment(self, text):
 		paragraphs = text.split('\n')
@@ -62,7 +57,7 @@ class MetamindSentimenter:
 		for i in range(0, len(paragraphs)):
 			par = paragraphs[i]
 			pid = "p" + str(i)
-			psent = 0
+			psent = self.computeSentimentPart(par)
 			sentences = re.split('([.|!|?]) ',par)
 			pardict = {}
 			sentenceslist = []
