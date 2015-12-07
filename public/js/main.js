@@ -63,6 +63,7 @@ dostuff = function(data)
 
 undostuff = function()
 {
+	highlighted = -1;
 	$('#maincontent').html(content1);
 	$('#gobtn').unbind('click');
 	$('#gobtn').val("Go")
