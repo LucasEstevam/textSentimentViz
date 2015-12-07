@@ -8,7 +8,7 @@ var content2 = `<div class="row">
             </div>`;
 
 var content1 = `<form>
-            <textarea class="form-control", rows = 5, id="textInput", placeholder="Type or paste your text here..."></textarea>
+            <textarea class="form-control", rows = 8, id="textInput", placeholder="Type or paste your text here..."></textarea>
             </br>            
           </form>`;
 
@@ -20,8 +20,8 @@ rectclick = function(d,i)
 {
 	if(highlighted == i)
 	{
-		highlighted = -1;
 		clearHighlights();
+		highlighted = -1		
 	}else
 	{
 		clearHighlights();
@@ -30,6 +30,8 @@ rectclick = function(d,i)
 			highlightSentence(d.sids[j]);
 		}
 		highlighted = i;
+		oldclass = $(".l-" + i).attr("class")
+		$(".l-" + i).attr("class", oldclass + " barstroke")
 	}
 }
 
@@ -40,6 +42,10 @@ highlightSentence = function(sid)
 
 clearHighlights = function()
 {
+	if(highlighted >= 0)
+	{
+		$(".l-" + highlighted).attr("class",$(".l-" + highlighted).attr("class").replace("barstroke", ""));
+	}
 	$('span').removeClass("hsentence");
 }
 
@@ -195,7 +201,7 @@ displaytext = function(data)
 	  	    .attr("transform", translateFun);
 
 	bar.append("rect")
-		.attr("class", function(d) { return d.scoreSum < 0 ? "bar negative" : "bar positive"; })
+		.attr("class", function(d, i) { return (d.scoreSum < 0 ? "bar negative" : "bar positive") + " l-" + i; })
 		.attr("height", barHeight - 1)
 		.attr("width",0)
 		.on("click", rectclick)
