@@ -262,7 +262,7 @@ displayChart = function(byLine)
 		endPct = Math.min((sentence.finalX - finalLine.startX)/(finalLine.finalX - finalLine.startX),1);
 
 		barStartH = startLine.lineHeight + barHeight*startPct;
-		barEndH = finalLine.lineHeight + barHeight*endPct;
+		barEndH = finalLine.lineHeight + barHeight*endPct-1;
 		sentence.bar.height = barEndH-barStartH;
 		sentence.bar.width = Math.abs(x(sentence.score) - x(0));
 		if(sentence.score > 0)
