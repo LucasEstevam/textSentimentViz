@@ -109,7 +109,7 @@ undostuff = function()
 		$('#gobtn').prop( "disabled", true );
 		$('#gobtn').val("Loading...")
 		var data = {text: $('#textInput').val()}
-		$.get('/backend/getsentiment', data, function(data)
+		$.get('backend/getsentiment', data, function(data)
 		{
 			dostuff(data);
 		})
